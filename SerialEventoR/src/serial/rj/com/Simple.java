@@ -61,6 +61,7 @@ public class Simple implements SerialPortEventListener {
         return;
     }
 
+    @Override
     public void serialEvent(SerialPortEvent event) {
         switch (event.getEventType()) {
             case SerialPortEvent.BI:
@@ -86,7 +87,7 @@ public class Simple implements SerialPortEventListener {
                 byte in[] = new byte[800];
                 int ret = 0;
 
-                System.out.println("Got Data Available");
+                System.out.println("Got Data Available (tienes datos disponible)");
                 try {
                     ret = input.read(in, 0, 63);
                 } catch (Exception e) {
