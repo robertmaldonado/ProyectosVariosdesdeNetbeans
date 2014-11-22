@@ -12,6 +12,8 @@ import gnu.io.SerialPortEventListener;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Enumeration;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -51,7 +53,7 @@ public class Simple implements SerialPortEventListener {
                         output = port.getOutputStream();
                         input = port.getInputStream();
                         System.out.println("writing output");
-                        output.write(new String("123456789\0").getBytes());
+                        output.write("012345678901234567890probando probando correcto".getBytes());
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -84,12 +86,21 @@ public class Simple implements SerialPortEventListener {
                 System.out.print("Out Buff Empty\n");
                 break;
             case SerialPortEvent.DATA_AVAILABLE:
+        {
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException ex) {
+               System.out.println("error en retardo") ;
+            }
+        }
                 byte in[] = new byte[800];
                 int ret = 0;
 
                 System.out.println("Got Data Available (tienes datos disponible)");
                 try {
                     ret = input.read(in, 0, 63);
+                     
+                    //  System.out.println(input.);
                 } catch (Exception e) {
                     System.out.println("Input Exception");
                 }
