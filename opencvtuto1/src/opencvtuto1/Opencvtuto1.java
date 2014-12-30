@@ -24,6 +24,8 @@ public class Opencvtuto1 {
         System.out.println("hola mundo opencv version" + Core.VERSION);
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
         Mat m = Mat.eye(8, 8, CvType.CV_8UC1);
+        
+        
         System.out.println("m=" + m.dump());
 
     }
